@@ -1,0 +1,19 @@
+export const filterProducts = async (url, categoryID, menuID, dietaryID, minPrice, maxPrice) => {
+  try {
+    const apiUrl = `${url}/public/api/filter_product/?category_id=${categoryID}&menu_id=${menuID}&dietary_id=${dietaryID}&min_price=${minPrice}&max_price=${maxPrice}`;
+    
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error in filtering products =>', error);
+    throw error; // Rethrow the error to be handled by the calling code
+  }
+};
