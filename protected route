@@ -1,0 +1,14 @@
+        <Route path="/" element={<ProtectedRoutes Components={AdminLogin} />} />
+
+   useEffect(() => {
+        if (!login) {
+            navigate('/login');
+        } else if(!login) {
+            navigate('/customProject');
+          }
+        
+        else if(login && location.pathname === '/') {
+            navigate('/dashboard');
+          }
+    }, [navigate,login , location.pathname]);
+
